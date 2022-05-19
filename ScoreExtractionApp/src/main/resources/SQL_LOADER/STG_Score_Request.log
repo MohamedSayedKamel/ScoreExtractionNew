@@ -1,0 +1,518 @@
+
+SQL*Loader: Release 19.0.0.0.0 - Production on Thu May 19 12:05:22 2022
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   D:\ScoreExtractionGitHub\ScoreExtraction-master\ScoreExtractionApp\src\main\resources\SQL_LOADER\STG_Score_Request.ctl
+Data File:      D:\ScoreExtractionGitHub\ScoreExtraction-master\ScoreExtractionApp\src\main\resources\PROCESSING\STG_Score_Request.csv
+  Bad File:     D:\ScoreExtractionGitHub\ScoreExtraction-master\ScoreExtractionApp\src\main\resources\PROCESSING\STG_Score_Request_Bad_Records.csv
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 1
+Errors allowed: 2147483647
+Bind array:     250 rows, maximum of 1048576 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table STG_SCORE_REQUEST, loaded from every logical record.
+Insert option in effect for this table: APPEND
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+RUN_ID                              FIRST     *   ,       CHARACTER            
+    SQL string for column : "RUN_ID_FNC"
+RUN_DATE                             NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:RUN_DATE,'YYYYMMDD')"
+CONTRACT_NUMBER                      NEXT     *   ,       CHARACTER            
+CIC                                  NEXT     *   ,       CHARACTER            
+PRODUCT_CODE                         NEXT     *   ,       CHARACTER            
+SALARY_TRANSFER                      NEXT     *   ,       CHARACTER            
+OPEN_DATE                            NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:OPEN_DATE,'YYYYMMDD')"
+BRANCH_SHOWROOM_ACC                  NEXT     *   ,       CHARACTER            
+EMP_COMPANY                          NEXT     *   ,       CHARACTER            
+EMP_DEPARTMENT                       NEXT     *   ,       CHARACTER            
+MILITARY_RANK                        NEXT     *   ,       CHARACTER            
+DURATION_IN_MONTH                    NEXT     *   ,       CHARACTER            
+GROSS_SALARY                         NEXT     *   ,       CHARACTER            
+DEPENDENTS                           NEXT     *   ,       CHARACTER            
+DATE_OF_BIRTH                        NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:DATE_OF_BIRTH,'YYYYMMDD')"
+EMPLOYER_ENGAGEMENT_DT               NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:EMPLOYER_ENGAGEMENT_DT,'YYYYMMDD')"
+ARMS_PROPERTY_TYPE                   NEXT     *   ,       CHARACTER            
+ARMS_REGION                          NEXT     *   ,       CHARACTER            
+DOWNPAYMENT_AMT                      NEXT     *   ,       CHARACTER            
+BALLOON_AMOUNT                       NEXT     *   ,       CHARACTER            
+ARMS_VEHICLE_BRAND_NAME              NEXT     *   ,       CHARACTER            
+ARMS_VEHICLE_BRAND_CAT               NEXT     *   ,       CHARACTER            
+RATE                                 NEXT     *   ,       CHARACTER            
+ADD_RATE                             NEXT     *   ,       CHARACTER            
+ORIG_APPROVAL_AMT                    NEXT     *   ,       CHARACTER            
+SUB_CODE                             NEXT     *   ,       CHARACTER            
+DELINQ_DAYS                          NEXT     *   ,       CHARACTER            
+PRINCIPAL_OUTSTANDING                NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M24                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M23                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M22                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M21                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M20                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M19                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M18                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M17                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M16                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M15                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M14                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M13                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M12                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M11                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M10                      NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M9                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M8                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M7                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M6                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M5                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M4                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M3                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M2                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M1                       NEXT     *   ,       CHARACTER            
+DELINQ_DAYS_M0                       NEXT     *   ,       CHARACTER            
+EMI_M24                              NEXT     *   ,       CHARACTER            
+EMI_M23                              NEXT     *   ,       CHARACTER            
+EMI_M22                              NEXT     *   ,       CHARACTER            
+EMI_M21                              NEXT     *   ,       CHARACTER            
+EMI_M20                              NEXT     *   ,       CHARACTER            
+EMI_M19                              NEXT     *   ,       CHARACTER            
+EMI_M18                              NEXT     *   ,       CHARACTER            
+EMI_M17                              NEXT     *   ,       CHARACTER            
+EMI_M16                              NEXT     *   ,       CHARACTER            
+EMI_M15                              NEXT     *   ,       CHARACTER            
+EMI_M14                              NEXT     *   ,       CHARACTER            
+EMI_M13                              NEXT     *   ,       CHARACTER            
+EMI_M12                              NEXT     *   ,       CHARACTER            
+EMI_M11                              NEXT     *   ,       CHARACTER            
+EMI_M10                              NEXT     *   ,       CHARACTER            
+EMI_M9                               NEXT     *   ,       CHARACTER            
+EMI_M8                               NEXT     *   ,       CHARACTER            
+EMI_M7                               NEXT     *   ,       CHARACTER            
+EMI_M6                               NEXT     *   ,       CHARACTER            
+EMI_M5                               NEXT     *   ,       CHARACTER            
+EMI_M4                               NEXT     *   ,       CHARACTER            
+EMI_M3                               NEXT     *   ,       CHARACTER            
+EMI_M2                               NEXT     *   ,       CHARACTER            
+EMI_M1                               NEXT     *   ,       CHARACTER            
+EMI_M0                               NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M24                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M23                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M22                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M21                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M20                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M19                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M18                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M17                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M16                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M15                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M14                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M13                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M12                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M11                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M10                    NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M9                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M8                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M7                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M6                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M5                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M4                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M3                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M2                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M1                     NEXT     *   ,       CHARACTER            
+DELINQ_AMOUNT_M0                     NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M24               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M23               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M22               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M21               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M20               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M19               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M18               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M17               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M16               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M15               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M14               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M13               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M12               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M11               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M10               NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M9                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M8                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M7                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M6                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M5                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M4                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M3                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M2                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M1                NEXT     *   ,       CHARACTER            
+OUTSTANDING_AMOUNT_M0                NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M24            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M23            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M22            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M21            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M20            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M19            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M18            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M17            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M16            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M15            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M14            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M13            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M12            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M11            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M10            NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M9             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M8             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M7             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M6             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M5             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M4             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M3             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M2             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M1             NEXT     *   ,       CHARACTER            
+AVERAGE_BALANCE_MONTH_M0             NEXT     *   ,       CHARACTER            
+ARMS_MITIGANT_CODE                   NEXT     *   ,       CHARACTER            
+ARMS_MITIGANT_DESC                   NEXT     *   ,       CHARACTER            
+ARMS_MITIGANT_VALUE                  NEXT     *   ,       CHARACTER            
+ARMS_COLL_AREA                       NEXT     *   ,       CHARACTER            
+ARMS_VEHICLE_BRAND_TYPE              NEXT     *   ,       CHARACTER            
+ARMS_PROPERTY_EVAL_STATUS            NEXT     *   ,       CHARACTER            
+ARMS_MITIGANT_VALUE_BY_OWNER         NEXT     *   ,       CHARACTER            
+ARMS_BOOK_VALUE                      NEXT     *   ,       CHARACTER            
+ARMS_VALUATION_DIFF                  NEXT     *   ,       CHARACTER            
+ARMS_CONTRACT_NUMBER                 NEXT     *   ,       CHARACTER            
+ARMS_MANUFACTURE_YEAR                NEXT     *   ,       CHARACTER            
+ARMS_VEHICLE_MANUFACTURE_YEAR        NEXT     *   ,       CHARACTER            
+PRIMARY_CARD_FLG                     NEXT     *   ,       CHARACTER            
+SUPPLEMENTARY_CARD_LIMIT             NEXT     *   ,       CHARACTER            
+RESIDENT_STATUS                      NEXT     *   ,       CHARACTER            
+RESIDENT_TYPE                        NEXT     *   ,       CHARACTER            
+SALARY_TRANSFER_TYPE_CIF             NEXT     *   ,       CHARACTER            
+GENDER                               NEXT     *   ,       CHARACTER            
+MARITAL_STATUS                       NEXT     *   ,       CHARACTER            
+CITY                                 NEXT     *   ,       CHARACTER            
+CIVIL_STATUS                         NEXT     *   ,       CHARACTER            
+DISTRICT_CODE                        NEXT     *   ,       CHARACTER            
+EDUCATION_LEVEL                      NEXT     *   ,       CHARACTER            
+HOUSE_OWNED_STATUS                   NEXT     *   ,       CHARACTER            
+NATIONALITY                          NEXT     *   ,       CHARACTER            
+NUMBER_OF_CARS                       NEXT     *   ,       CHARACTER            
+OCCUPATION_TYPE                      NEXT     *   ,       CHARACTER            
+REGION                               NEXT     *   ,       CHARACTER            
+CIC_OPEN_DATE                        NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:CIC_OPEN_DATE,'YYYYMMDD')"
+TOTAL_NO_ACTIVE_CONTRACTS            NEXT     *   ,       CHARACTER            
+ACCRUED_INT                          NEXT     *   ,       CHARACTER            
+BASIC_SALARY_AMOUNT                  NEXT     *   ,       CHARACTER            
+BRANCH_SHOWROOM_ACCOUNT              NEXT     *   ,       CHARACTER            
+BRANCH_SHOWROOM_ACCOUNT_CODE         NEXT     *   ,       CHARACTER            
+BRANCH_SHOWROOM_CODE                 NEXT     *   ,       CHARACTER            
+BUSINESS_POSITION                    NEXT     *   ,       CHARACTER            
+CHANNEL_CODE                         NEXT     *   ,       CHARACTER            
+CUR_BOOK_BAL                         NEXT     *   ,       CHARACTER            
+CURR_PAY                             NEXT     *   ,       CHARACTER            
+CURRENCY                             NEXT     *   ,       CHARACTER            
+CUS_SUBTYPE                          NEXT     *   ,       CHARACTER            
+DEBT_BURDEN_RATIO                    NEXT     *   ,       CHARACTER            
+DEPT_CODE                            NEXT     *   ,       CHARACTER            
+DISBURSEMENT_AMOUNT                  NEXT     *   ,       CHARACTER            
+DISBURSEMENT_DATE                    NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:DISBURSEMENT_DATE,'YYYYMMDD')"
+EMPLOYEE_TYPE                        NEXT     *   ,       CHARACTER            
+EMPLOYER_CLASS_CODE                  NEXT     *   ,       CHARACTER            
+END_OF_SERVICE_BENEFIT_AMOUNT        NEXT     *   ,       CHARACTER            
+FEES                                 NEXT     *   ,       CHARACTER            
+FINANCE_AMT                          NEXT     *   ,       CHARACTER            
+INSTAL_AMT                           NEXT     *   ,       CHARACTER            
+INSTALMENT_WITH_INSURANCE            NEXT     *   ,       CHARACTER            
+MATURE_DATE                          NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:MATURE_DATE,'YYYYMMDD')"
+MONTHLY_ALLOWANCE_AMOUNT             NEXT     *   ,       CHARACTER            
+MONTHLY_OTHER_INCOME_AMOUNT          NEXT     *   ,       CHARACTER            
+NET_BAL                              NEXT     *   ,       CHARACTER            
+NO_OF_DELINQ_INST                    NEXT     *   ,       CHARACTER            
+ORIG_BALANCE                         NEXT     *   ,       CHARACTER            
+ORIG_PAY                             NEXT     *   ,       CHARACTER            
+ORIG_PROFIT                          NEXT     *   ,       CHARACTER            
+OTHER_MONTHLY_DEDUCTION_AMT          NEXT     *   ,       CHARACTER            
+OUTSTANDING_WITH_TOTAL_PROFIT        NEXT     *   ,       CHARACTER            
+PAYMENT_PRINCIPAL_AMT                NEXT     *   ,       CHARACTER            
+PRODUCT_TYPE                         NEXT     *   ,       CHARACTER            
+PROFIT_RATE_SUB_TYPE                 NEXT     *   ,       CHARACTER            
+RELATION_CONTRACT_TYPE               NEXT     *   ,       CHARACTER            
+REMAIN_PAYMENTS                      NEXT     *   ,       CHARACTER            
+REMAIN_TERM                          NEXT     *   ,       CHARACTER            
+SALARY_TRANSFER_TYPE                 NEXT     *   ,       CHARACTER            
+CUSTOMER_SEGMENT                     NEXT     *   ,       CHARACTER            
+SALES_BRANCH                         NEXT     *   ,       CHARACTER            
+SALES_CD                             NEXT     *   ,       CHARACTER            
+SALES_USERID                         NEXT     *   ,       CHARACTER            
+TERM                                 NEXT     *   ,       CHARACTER            
+TOT_GRACE_PRD_PROFIT                 NEXT     *   ,       CHARACTER            
+TOTAL_PAYMENTS                       NEXT     *   ,       CHARACTER            
+TOTAL_EARLY_PAYMENT_AMT              NEXT     *   ,       CHARACTER            
+TOTAL_INSTALLMENT_DUE_AMT            NEXT     *   ,       CHARACTER            
+TOTAL_NO_OPEN_CONTRACTS              NEXT     *   ,       CHARACTER            
+SPARE_101                            NEXT     *   ,       CHARACTER            
+SPARE_102                            NEXT     *   ,       CHARACTER            
+SPARE_103                            NEXT     *   ,       CHARACTER            
+SPARE_104                            NEXT     *   ,       CHARACTER            
+SPARE_105                            NEXT     *   ,       CHARACTER            
+SPARE_106                            NEXT     *   ,       CHARACTER            
+SPARE_107                            NEXT     *   ,       CHARACTER            
+SPARE_108                            NEXT     *   ,       CHARACTER            
+SPARE_109                            NEXT     *   ,       CHARACTER            
+SPARE_110                            NEXT     *   ,       CHARACTER            
+SPARE_111                            NEXT     *   ,       CHARACTER            
+SPARE_112                            NEXT     *   ,       CHARACTER            
+SPARE_113                            NEXT     *   ,       CHARACTER            
+SPARE_114                            NEXT     *   ,       CHARACTER            
+SPARE_115                            NEXT     *   ,       CHARACTER            
+SPARE_116                            NEXT     *   ,       CHARACTER            
+SPARE_117                            NEXT     *   ,       CHARACTER            
+SPARE_118                            NEXT     *   ,       CHARACTER            
+SPARE_119                            NEXT     *   ,       CHARACTER            
+SPARE_120                            NEXT     *   ,       CHARACTER            
+RL_FOOD_BEVERAGES                    NEXT     *   ,       CHARACTER            
+RL_HOUSING                           NEXT     *   ,       CHARACTER            
+RL_UTILITIES                         NEXT     *   ,       CHARACTER            
+RL_HEALTHCARE                        NEXT     *   ,       CHARACTER            
+RL_TRANSPORT                         NEXT     *   ,       CHARACTER            
+RL_COMMUNICATIONS                    NEXT     *   ,       CHARACTER            
+RL_EDUCATION_FEES                    NEXT     *   ,       CHARACTER            
+RL_HOME_SERVANTS                     NEXT     *   ,       CHARACTER            
+RL_FEES_ON_EXPATS                    NEXT     *   ,       CHARACTER            
+RL_OTHER_FUTURE_EXPENSES             NEXT     *   ,       CHARACTER            
+RL_OTHER_INCOME                      NEXT     *   ,       CHARACTER            
+RL_TOTAL_EXPENSES                    NEXT     *   ,       CHARACTER            
+RL_OTHER_OBLIGATIONS                 NEXT     *   ,       CHARACTER            
+SCORING_REQUEST_TYPE                 NEXT     *   ,       CHARACTER            
+SCORING_STAGE                        NEXT     *   ,       CHARACTER            
+SCORING_SOURCE                       NEXT     *   ,       CHARACTER            
+APPEND_DB_CODE                       NEXT     *   ,       CHARACTER            
+APPLICATION_ID                       NEXT     *   ,       CHARACTER            
+NATIONAL_ID                          NEXT     *   ,       CHARACTER            
+DB_TABLE_CODE                        NEXT     *   ,       CHARACTER            
+TRANSACTION_ID                       NEXT     *   ,       CHARACTER            
+EXECUTION_DATE_TIME                  NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:EXECUTION_DATE_TIME,'YYYYMMDD')"
+CODE_1                               NEXT     *   ,       CHARACTER            
+CODE_2                               NEXT     *   ,       CHARACTER            
+CODE_3                               NEXT     *   ,       CHARACTER            
+CODE_4                               NEXT     *   ,       CHARACTER            
+CODE_5                               NEXT     *   ,       CHARACTER            
+CODE_6                               NEXT     *   ,       CHARACTER            
+CODE_7                               NEXT     *   ,       CHARACTER            
+CODE_8                               NEXT     *   ,       CHARACTER            
+CODE_9                               NEXT     *   ,       CHARACTER            
+CODE_10                              NEXT     *   ,       CHARACTER            
+PROGRESS_NUMBER                      NEXT     *   ,       CHARACTER            
+PORTFOLIO_DATE                       NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:PORTFOLIO_DATE,'YYYYMMDD')"
+TOTAL_LIABILITIES                    NEXT     *   ,       CHARACTER            
+NO_OF_LOANS                          NEXT     *   ,       CHARACTER            
+TOTAL_LIMIT                          NEXT     *   ,       CHARACTER            
+TOTAL_REVOLVING_LIMIT                NEXT     *   ,       CHARACTER            
+TOTAL_REVOLVING_LIAB                 NEXT     *   ,       CHARACTER            
+NO_OF_ENQUIRIES_12M                  NEXT     *   ,       CHARACTER            
+NO_OF_ENQUIRIES_30D                  NEXT     *   ,       CHARACTER            
+NO_OF_BOUNCED_CHEQUE                 NEXT     *   ,       CHARACTER            
+SIMAH_SCORE                          NEXT     *   ,       CHARACTER            
+SIMAH_SCORE_VERSION                  NEXT     *   ,       CHARACTER            
+WORST_DELINQUENT_24M_CRC             NEXT     *   ,       CHARACTER            
+WORST_DELINQUENT_24M_PLN             NEXT     *   ,       CHARACTER            
+WORST_DELINQUENT_24M_AUTO            NEXT     *   ,       CHARACTER            
+WORST_DELINQUENT_24M_MTG             NEXT     *   ,       CHARACTER            
+WORST_DELINQUENT_24M_OTHER           NEXT     *   ,       CHARACTER            
+CURRENT_WORST_DELINQUENT_CRC         NEXT     *   ,       CHARACTER            
+CURRENT_WORST_DELINQUENT_PLN         NEXT     *   ,       CHARACTER            
+CURRENT_WORST_DELINQUENT_AUTO        NEXT     *   ,       CHARACTER            
+CURRENT_WORST_DELINQUENT_MTG         NEXT     *   ,       CHARACTER            
+CURRENT_WORST_DELINQUENT_OTHER       NEXT     *   ,       CHARACTER            
+CONTRACTUAL_PAYMENT_CRC              NEXT     *   ,       CHARACTER            
+CONTRACTUAL_PAYMENT_PLN              NEXT     *   ,       CHARACTER            
+CONTRACTUAL_PAYMENT_AUTO             NEXT     *   ,       CHARACTER            
+CONTRACTUAL_PAYMENT_MTG              NEXT     *   ,       CHARACTER            
+CONTRACTUAL_PAYMENT_OTHER            NEXT     *   ,       CHARACTER            
+NUMBER_OF_DEFAULT_CRC                NEXT     *   ,       CHARACTER            
+NUMBER_OF_DEFAULT_PLN                NEXT     *   ,       CHARACTER            
+NUMBER_OF_DEFAULT_AUTO               NEXT     *   ,       CHARACTER            
+NUMBER_OF_DEFAULT_MTG                NEXT     *   ,       CHARACTER            
+NUMBER_OF_DEFAULT_OTHER              NEXT     *   ,       CHARACTER            
+NUMBER_OF_CI_DEFAULT_CRC             NEXT     *   ,       CHARACTER            
+NUMBER_OF_CI_DEFAULT_PLN             NEXT     *   ,       CHARACTER            
+NUMBER_OF_CI_DEFAULT_AUTO            NEXT     *   ,       CHARACTER            
+NUMBER_OF_CI_DEFAULT_MTG             NEXT     *   ,       CHARACTER            
+NUMBER_OF_CI_DEFAULT_OTHER           NEXT     *   ,       CHARACTER            
+SUMMED_SALARY                        NEXT     *   ,       CHARACTER            
+DEBT_BURDEN                          NEXT     *   ,       CHARACTER            
+DEBT_BURDEN_RATE                     NEXT     *   ,       CHARACTER            
+NUMBER_OF_EXECUTED_EXJUDG            NEXT     *   ,       CHARACTER            
+NUMBER_OF_NOT_EXECUTED_EXJUDG        NEXT     *   ,       CHARACTER            
+OUTSTANDING_BALANCE_NOTEXJUDG        NEXT     *   ,       CHARACTER            
+CARD_PRODUCT_LIMIT                   NEXT     *   ,       CHARACTER            
+CARD_PRODUCT_CODE                    NEXT     *   ,       CHARACTER            
+CARD_OUTSTANDING_BALANCE             NEXT     *   ,       CHARACTER            
+SPARE_01                             NEXT     *   ,       CHARACTER            
+SPARE_02                             NEXT     *   ,       CHARACTER            
+SPARE_03                             NEXT     *   ,       CHARACTER            
+SPARE_04                             NEXT     *   ,       CHARACTER            
+SPARE_05                             NEXT     *   ,       CHARACTER            
+SPARE_06                             NEXT     *   ,       CHARACTER            
+SPARE_07                             NEXT     *   ,       CHARACTER            
+SPARE_08                             NEXT     *   ,       CHARACTER            
+SPARE_09                             NEXT     *   ,       CHARACTER            
+SPARE_10                             NEXT     *   ,       CHARACTER            
+SPARE_11                             NEXT     *   ,       CHARACTER            
+SPARE_12                             NEXT     *   ,       CHARACTER            
+SPARE_13                             NEXT     *   ,       CHARACTER            
+SPARE_14                             NEXT     *   ,       CHARACTER            
+SPARE_15                             NEXT     *   ,       CHARACTER            
+SPARE_16                             NEXT     *   ,       CHARACTER            
+SPARE_17                             NEXT     *   ,       CHARACTER            
+SPARE_18                             NEXT     *   ,       CHARACTER            
+SPARE_19                             NEXT     *   ,       CHARACTER            
+SPARE_20                             NEXT     *   ,       CHARACTER            
+SPARE_21                             NEXT     *   ,       CHARACTER            
+SPARE_22                             NEXT     *   ,       CHARACTER            
+SPARE_23                             NEXT     *   ,       CHARACTER            
+SPARE_24                             NEXT     *   ,       CHARACTER            
+SPARE_25                             NEXT     *   ,       CHARACTER            
+SPARE_26                             NEXT     *   ,       CHARACTER            
+SPARE_27                             NEXT     *   ,       CHARACTER            
+SPARE_28                             NEXT     *   ,       CHARACTER            
+SPARE_29                             NEXT     *   ,       CHARACTER            
+SPARE_30                             NEXT     *   ,       CHARACTER            
+SPARE_31                             NEXT     *   ,       CHARACTER            
+SPARE_32                             NEXT     *   ,       CHARACTER            
+SPARE_33                             NEXT     *   ,       CHARACTER            
+SPARE_34                             NEXT     *   ,       CHARACTER            
+SPARE_35                             NEXT     *   ,       CHARACTER            
+SPARE_36                             NEXT     *   ,       CHARACTER            
+SPARE_37                             NEXT     *   ,       CHARACTER            
+SPARE_38                             NEXT     *   ,       CHARACTER            
+SPARE_39                             NEXT     *   ,       CHARACTER            
+SPARE_40                             NEXT     *   ,       CHARACTER            
+SPARE_41                             NEXT     *   ,       CHARACTER            
+SPARE_42                             NEXT     *   ,       CHARACTER            
+SPARE_43                             NEXT     *   ,       CHARACTER            
+SPARE_44                             NEXT     *   ,       CHARACTER            
+SPARE_45                             NEXT     *   ,       CHARACTER            
+SPARE_46                             NEXT     *   ,       CHARACTER            
+SPARE_47                             NEXT     *   ,       CHARACTER            
+SPARE_48                             NEXT     *   ,       CHARACTER            
+SPARE_49                             NEXT     *   ,       CHARACTER            
+SPARE_50                             NEXT     *   ,       CHARACTER            
+ACCOUNT_1                            NEXT     *   ,       CHARACTER            
+APPLICATION_DATE                     NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:APPLICATION_DATE,'YYYYMMDD')"
+APPROVAL_DATE                        NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:APPROVAL_DATE,'YYYYMMDD')"
+BRANCH_LOAN_APPLIED                  NEXT     *   ,       CHARACTER            
+H_CATEGORY_PRODUCT                   NEXT     *   ,       CHARACTER            
+LAST_PAYMENT                         NEXT     *   ,       CHARACTER            
+NEXT_PAY                             NEXT     *   ,       CHARACTER            
+ORG_UNIT                             NEXT     *   ,       CHARACTER            
+ORIG_TERM                            NEXT     *   ,       CHARACTER            
+PAY_FREQUENCY                        NEXT     *   ,       CHARACTER            
+FTV                                  NEXT     *   ,       CHARACTER            
+OUTSTANDING_WITH_ACCRUAL_PFT         NEXT     *   ,       CHARACTER            
+TRANSACTION_DATE                     NEXT     *   ,       CHARACTER            
+    SQL string for column : "TO_DATE(:TRANSACTION_DATE,'YYYYMMDD')"
+B_CODE_01                            NEXT     *   ,       CHARACTER            
+B_CODE_02                            NEXT     *   ,       CHARACTER            
+B_CODE_03                            NEXT     *   ,       CHARACTER            
+B_CODE_04                            NEXT     *   ,       CHARACTER            
+B_CODE_05                            NEXT     *   ,       CHARACTER            
+B_CODE_06                            NEXT     *   ,       CHARACTER            
+B_CODE_07                            NEXT     *   ,       CHARACTER            
+B_CODE_08                            NEXT     *   ,       CHARACTER            
+B_CODE_09                            NEXT     *   ,       CHARACTER            
+B_CODE_10                            NEXT     *   ,       CHARACTER            
+B_SPARE_01                           NEXT     *   ,       CHARACTER            
+B_SPARE_02                           NEXT     *   ,       CHARACTER            
+B_SPARE_03                           NEXT     *   ,       CHARACTER            
+B_SPARE_04                           NEXT     *   ,       CHARACTER            
+B_SPARE_05                           NEXT     *   ,       CHARACTER            
+B_SPARE_06                           NEXT     *   ,       CHARACTER            
+B_SPARE_07                           NEXT     *   ,       CHARACTER            
+B_SPARE_08                           NEXT     *   ,       CHARACTER            
+B_SPARE_09                           NEXT     *   ,       CHARACTER            
+B_SPARE_10                           NEXT     *   ,       CHARACTER            
+B_SPARE_11                           NEXT     *   ,       CHARACTER            
+B_SPARE_12                           NEXT     *   ,       CHARACTER            
+B_SPARE_13                           NEXT     *   ,       CHARACTER            
+B_SPARE_14                           NEXT     *   ,       CHARACTER            
+B_SPARE_15                           NEXT     *   ,       CHARACTER            
+B_SPARE_16                           NEXT     *   ,       CHARACTER            
+B_SPARE_17                           NEXT     *   ,       CHARACTER            
+B_SPARE_18                           NEXT     *   ,       CHARACTER            
+B_SPARE_19                           NEXT     *   ,       CHARACTER            
+B_SPARE_20                           NEXT     *   ,       CHARACTER            
+B_SPARE_21                           NEXT     *   ,       CHARACTER            
+B_SPARE_22                           NEXT     *   ,       CHARACTER            
+B_SPARE_23                           NEXT     *   ,       CHARACTER            
+B_SPARE_24                           NEXT     *   ,       CHARACTER            
+B_SPARE_25                           NEXT     *   ,       CHARACTER            
+B_SPARE_26                           NEXT     *   ,       CHARACTER            
+B_SPARE_27                           NEXT     *   ,       CHARACTER            
+B_SPARE_28                           NEXT     *   ,       CHARACTER            
+B_SPARE_29                           NEXT     *   ,       CHARACTER            
+B_SPARE_30                           NEXT     *   ,       CHARACTER            
+B_SPARE_31                           NEXT     *   ,       CHARACTER            
+B_SPARE_32                           NEXT     *   ,       CHARACTER            
+B_SPARE_33                           NEXT     *   ,       CHARACTER            
+B_SPARE_34                           NEXT     *   ,       CHARACTER            
+B_SPARE_35                           NEXT     *   ,       CHARACTER            
+B_SPARE_36                           NEXT     *   ,       CHARACTER            
+B_SPARE_37                           NEXT     *   ,       CHARACTER            
+B_SPARE_38                           NEXT     *   ,       CHARACTER            
+B_SPARE_39                           NEXT     *   ,       CHARACTER            
+B_SPARE_40                           NEXT     *   ,       CHARACTER            
+B_SPARE_41                           NEXT     *   ,       CHARACTER            
+B_SPARE_42                           NEXT     *   ,       CHARACTER            
+B_SPARE_43                           NEXT     *   ,       CHARACTER            
+B_SPARE_44                           NEXT     *   ,       CHARACTER            
+B_SPARE_45                           NEXT     *   ,       CHARACTER            
+B_SPARE_46                           NEXT     *   ,       CHARACTER            
+B_SPARE_47                           NEXT     *   ,       CHARACTER            
+B_SPARE_48                           NEXT     *   ,       CHARACTER            
+B_SPARE_49                           NEXT     *   ,       CHARACTER            
+B_SPARE_50                           NEXT     *   ,       CHARACTER            
+
+value used for ROWS parameter changed from 250 to 8
+Record 1: Rejected - Error on table STG_SCORE_REQUEST, column APPLICATION_DATE.
+ORA-01841: (full) year must be between -4713 and +9999, and not be 0
+
+
+Table STG_SCORE_REQUEST:
+  999 Rows successfully loaded.
+  1 Row not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 934992 bytes(8 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          1
+Total logical records read:          1000
+Total logical records rejected:         1
+Total logical records discarded:        0
+
+Run began on Thu May 19 12:05:22 2022
+Run ended on Thu May 19 12:05:27 2022
+
+Elapsed time was:     00:00:04.54
+CPU time was:         00:00:00.19

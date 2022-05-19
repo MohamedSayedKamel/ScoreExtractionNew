@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ScoreExtraction" transaction-type="RESOURCE_LOCAL">
+		<class>com.alrajhi.score.ScoreExtraction.entity.AScoreRequest</class>
+		<class>com.alrajhi.score.ScoreExtraction.entity.AScoreResponse</class>		
+		<class>com.alrajhi.score.ScoreExtraction.entity.InputBadRecordsLog</class>
+		<class>com.alrajhi.score.ScoreExtraction.entity.RunLog</class>
+		<class>com.alrajhi.score.ScoreExtraction.entity.AppParam</class>
+		<class>com.alrajhi.score.ScoreExtraction.entity.BatchLog</class>
+		<class>com.alrajhi.score.ScoreExtraction.entity.BScoreRequest</class>
+		<class>com.alrajhi.score.ScoreExtraction.entity.BScoreResponse</class>
+	</persistence-unit>
+</persistence>
