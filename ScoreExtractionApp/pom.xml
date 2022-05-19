@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.alrajhi.score</groupId>
+    <artifactId>ScoreExtractionApp</artifactId>
+    <version>0.0.1</version>
+    <!--<name>ScoreExtraction</name>-->
+    <name>ScoreExtractionApp</name>
+    <description>Score processing app</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    
+      <dependencies>
+
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>4.1</version>
+        </dependency>
+
+        <!-- jpa, crud repository -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <exclusions>
+        			<exclusion>
+            			<groupId>org.apache.tomcat</groupId>
+            			<artifactId>tomcat-jdbc</artifactId>
+        			</exclusion>
+    			</exclusions>
+        </dependency>
+
+		<!--Oracle Dependency -->
+		<!-- 
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.1</version>
+        </dependency>
+		 -->
+	<dependency>
+	    <groupId>com.oracle.database.jdbc</groupId>
+	    <artifactId>ojdbc8</artifactId>
+	    <version>19.6.0.0</version>
+	    <exclusions>
+    <exclusion>
+      <groupId>com.oracle.database.ha</groupId>
+      <artifactId>simplefan</artifactId>
+    </exclusion>
+    <exclusion>
+      <groupId>com.oracle.database.ha</groupId>
+      <artifactId>ons</artifactId>
+    </exclusion>
+  </exclusions>
+	</dependency>
+
+        
+
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.jasypt</artifactId>
+            <version>1.9.2_1</version>
+        </dependency>
+
+        <!-- <dependency>
+             <groupId>org.apache.commons</groupId>
+             <artifactId>commons-csv</artifactId>
+             <version>1.7</version>
+         </dependency>-->
+
+        <dependency>
+            <groupId>com.univocity</groupId>
+            <artifactId>univocity-parsers</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <!--APPSCORE-->
+        <dependency>
+            <groupId>com.experian.appscore</groupId>
+            <artifactId>appscore</artifactId>
+            <version>1.2.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/APPSCORE.jar
+            </systemPath>
+        </dependency>       
+        <!--BEHSCORE-->
+        <dependency>
+            <groupId>com.experian.behscore</groupId>
+            <artifactId>behscore</artifactId>
+            <version>1.2.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/BEHSCORE.jar
+            </systemPath>
+        </dependency>        
+        <!--experian-->
+        <dependency>
+            <groupId>com.experian.encoder</groupId>
+            <artifactId>encoder</artifactId>
+            <version>1.2.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/com.experian.eda.encoder-1.2.1.EDA2-bundle.jar
+            </systemPath>
+        </dependency>
+        <!--DA-->
+        <dependency>
+            <groupId>com.experian.eda.da</groupId>
+            <artifactId>Decision.Agent.Bundle</artifactId>
+            <version>2.15.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/DA.jar
+            </systemPath>
+        </dependency>
+        <!--LOG Bridge-->
+        <dependency>
+            <groupId>org.grlea.Bridge</groupId>
+            <artifactId>Log.Bridge</artifactId>
+            <version>1.4.2</version>
+             <scope>system</scope>
+              <systemPath>${project.basedir}/src/main/resources/lib/log-bridge-1.0.jar </systemPath> 
+        </dependency>
+
+
+        <!--Spring Dependancy -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency> 
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>ScoreExtractionApp</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.alrajhi.score.ScoreExtraction.ScoreExtractionApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
