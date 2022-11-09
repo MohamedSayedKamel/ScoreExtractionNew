@@ -6,11 +6,15 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.0.RELEASE</version>
+        
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.alrajhi.score</groupId>
     <artifactId>ScoreExtractionApp</artifactId>
+    <!-- <packaging>jar</packaging>  -->  
+    <packaging>jar</packaging>
     <version>0.0.1</version>
+    
     <!--<name>ScoreExtraction</name>-->
     <name>ScoreExtractionApp</name>
     <description>Score processing app</description>
@@ -94,7 +98,7 @@
             <artifactId>guava</artifactId>
             <version>20.0</version>
         </dependency>
-
+	
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
@@ -133,6 +137,15 @@
             <version>1.2.1</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/lib/BEHSCORE.jar
+            </systemPath>
+        </dependency>  
+        <!-- ARB -->
+        <dependency>
+            <groupId>com.experian.arb</groupId>
+            <artifactId>arb</artifactId>
+            <version>1.2.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/ARB.jar
             </systemPath>
         </dependency>        
         <!--experian-->

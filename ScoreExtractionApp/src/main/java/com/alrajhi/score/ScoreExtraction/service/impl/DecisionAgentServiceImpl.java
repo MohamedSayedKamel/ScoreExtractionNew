@@ -84,7 +84,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
             
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult = this.getClass().getName() + ": " + "Error in building input for experian service, " + e.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in building input for experian service, " + e.getMessage()+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Error", BigDecimal.valueOf(0));
@@ -117,7 +117,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult = this.getClass().getName() + ": " + "Error in building input for experian service, " + e.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in building input for experian service, " + e.getMessage()+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Error", BigDecimal.valueOf(0));
@@ -151,7 +151,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult = this.getClass().getName() + ": " + "Error in building input for experian service, " + e.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in building input for experian service, " + e.getMessage()+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD-SCORE", logUser, "Error", BigDecimal.valueOf(0));
@@ -201,13 +201,13 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         int errors = Integer.parseInt((String) oControlData.getValue("ERRORCOUNT"));
 
         if (errors == 0) {
-            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors;
+            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("INFO")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Processing", BigDecimal.valueOf(requestId));
             }
         } else {
-        	logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors;
+        	logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
@@ -218,21 +218,21 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         if (errors > 0) {
             String error1 = (String) oControlData.getValue("ERROR[1]");
             log.info("Error 1: " + error1);
-            logResult = this.getClass().getName() + ": " + "Error 1: " + error1;
+            logResult = this.getClass().getName() + ": " + "Error 1: " + error1+ " "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
             }
 
             log.info("Error 2: " + (String) oControlData.getValue("ERROR[2]"));
-            logResult = this.getClass().getName() + ": " + "Error 2: " + (String) oControlData.getValue("ERROR[2]");
+            logResult = this.getClass().getName() + ": " + "Error 2: " + (String) oControlData.getValue("ERROR[2]")+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
             }
 
             log.info("Error 3: " + (String) oControlData.getValue("ERROR[3]"));
-            logResult = this.getClass().getName() + ": " + "Error 3: " + (String) oControlData.getValue("ERROR[3]");
+            logResult = this.getClass().getName() + ": " + "Error 3: " + (String) oControlData.getValue("ERROR[3]")+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
@@ -266,7 +266,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         int traceFlag = traceflagInsertNumber;
 
         log.info("Decision Agent Execute Start!");
-        logResult = this.getClass().getName() + ": " + "Decision agent execution started :: Execution Time - " + dateTimeFormatter.format(LocalDateTime.now());
+        logResult = this.getClass().getName() + ": " + "Decision agent execution started :: Execution Time - " + " "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
         if (logLevel.toUpperCase().equals("INFO")) {
         	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -280,13 +280,13 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         int errors = Integer.parseInt((String) oControlData.getValue("ERRORCOUNT"));
 
         if (errors == 0) {
-            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors;
+            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("INFO")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Processing", BigDecimal.valueOf(requestId));
             }
         } else {
-            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors;
+            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
@@ -297,21 +297,21 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         if (errors > 0) {
             String error1 = (String) oControlData.getValue("ERROR[1]");
             log.info("Error 1: " + error1);
-            logResult = this.getClass().getName() + ": " + "Error 1: " + error1;
+            logResult = this.getClass().getName() + ": " + "Error 1: " + error1+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
             }
 
             log.info("Error 2: " + (String) oControlData.getValue("ERROR[2]"));
-            logResult = this.getClass().getName() + ": " + "Error 2: " + (String) oControlData.getValue("ERROR[2]");
+            logResult = this.getClass().getName() + ": " + "Error 2: " + (String) oControlData.getValue("ERROR[2]")+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
             }
 
             log.info("Error 3: " + (String) oControlData.getValue("ERROR[3]"));
-            logResult = this.getClass().getName() + ": " + "Error 3: " + (String) oControlData.getValue("ERROR[3]");
+            logResult = this.getClass().getName() + ": " + "Error 3: " + (String) oControlData.getValue("ERROR[3]")+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
@@ -347,7 +347,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         int traceFlag = traceflagInsertNumber;
 
         log.info("Decision Agent Execute Start!");
-        logResult = this.getClass().getName() + ": " + "Decision agent execution started :: Execution Time - " + dateTimeFormatter.format(LocalDateTime.now());
+        logResult = this.getClass().getName() + ": " + "Decision agent execution started :: Execution Time - " + " "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
         if (logLevel.toUpperCase().equals("INFO")) {
         	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -361,13 +361,13 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         int errors = Integer.parseInt((String) oControlData.getValue("ERRORCOUNT"));
 
         if (errors == 0) {
-            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors;
+            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("INFO")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD-SCORE", logUser, "Processing", BigDecimal.valueOf(requestId));
             }
         } else {
-            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors;
+            logResult = this.getClass().getName() + ": " + "Decision agent execution finished successfully with return code = " + returnCode + " and errorcount = " + errors+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
@@ -378,21 +378,21 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
         if (errors > 0) {
             String error1 = (String) oControlData.getValue("ERROR[1]");
             log.info("Error 1: " + error1);
-            logResult = this.getClass().getName() + ": " + "Error 1: " + error1;
+            logResult = this.getClass().getName() + ": " + "Error 1: " + error1+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
             }
 
             log.info("Error 2: " + (String) oControlData.getValue("ERROR[2]"));
-            logResult = this.getClass().getName() + ": " + "Error 2: " + (String) oControlData.getValue("ERROR[2]");
+            logResult = this.getClass().getName() + ": " + "Error 2: " + (String) oControlData.getValue("ERROR[2]")+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
             }
 
             log.info("Error 3: " + (String) oControlData.getValue("ERROR[3]"));
-            logResult = this.getClass().getName() + ": " + "Error 3: " + (String) oControlData.getValue("ERROR[3]");
+            logResult = this.getClass().getName() + ": " + "Error 3: " + (String) oControlData.getValue("ERROR[3]")+" "+BigDecimal.valueOf(requestId)+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD-SCORE", logUser, "Error", BigDecimal.valueOf(requestId));
@@ -452,7 +452,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult = this.getClass().getName() + ": " + "Error in building row output map from experian service, " + e.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in building row output map from experian service, " + e.getMessage()+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Error", BigDecimal.valueOf(0));
@@ -512,7 +512,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult = this.getClass().getName() + ": " + "Error in building row output map from experian service, " + e.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in building row output map from experian service, " + e.getMessage()+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Error", BigDecimal.valueOf(0));
@@ -574,7 +574,7 @@ public class DecisionAgentServiceImpl implements DecisionAgentService {
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult = this.getClass().getName() + ": " + "Error in building row output map from experian service, " + e.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in building row output map from experian service, " + e.getMessage()+" "+ dateTimeFormatter.format(LocalDateTime.now());
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                 scoreParserService.saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD-SCORE", logUser, "Error", BigDecimal.valueOf(0));

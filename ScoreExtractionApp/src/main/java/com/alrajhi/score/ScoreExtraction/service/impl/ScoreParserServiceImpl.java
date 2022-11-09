@@ -334,7 +334,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
                     p_status = loadSTGData(StoredProcedureNamebScore, entitymanager);
 
                     if (p_status == 1) {
-                        logResult = StoredProcedureNamebScore + " procedure is failed.";
+                        logResult = StoredProcedureNamebScore + " BSCORE procedure is failed.";
                         log.error(logResult);
 
                         if (logLevel.toUpperCase().equals("ERROR")) {
@@ -342,7 +342,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
                             saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Error", BigDecimal.valueOf(0));
                         }
                     } else {
-                        logResult = StoredProcedureNamebScore + " procedure is successful.";
+                        logResult = StoredProcedureNamebScore + " BSCORE procedure is successful.";
                         log.info(logResult);
 
                         if (logLevel.toUpperCase().equals("INFO")) {
@@ -357,7 +357,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
                     p_status = loadSTGData(StoredProcedureNameLgd, entitymanager);
 
                     if (p_status == 1) {
-                        logResult = StoredProcedureNameLgd + " procedure is failed.";
+                        logResult = StoredProcedureNameLgd + " LGD procedure is failed.";
                         log.error(logResult);
 
                         if (logLevel.toUpperCase().equals("ERROR")) {
@@ -365,7 +365,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
                             saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD", logUser, "Error", BigDecimal.valueOf(0));
                         }
                     } else {
-                        logResult = StoredProcedureNameLgd + " procedure is successful.";
+                        logResult = StoredProcedureNameLgd + " LGD procedure is successful.";
                         log.info(logResult);
 
                         if (logLevel.toUpperCase().equals("INFO")) {
@@ -426,21 +426,18 @@ public class ScoreParserServiceImpl implements ScoreParserService {
                     b_Score_thread.start();
                     log.info("Thread b_Score started.");
             	}
+            	 if(scoringEnabledLgd && aScoreAggregationFinished.equals("1") && bScoreAggregationFinished.equals("1") && lgdAggregationFinished.equals("1"))
+             	{
+                     lgd_thread.start();
+                     log.info("Thread LGD started.");
+             	}
             	
                 a_Score_thread.join();
                 log.info("Thread a_Score finished.");
                 b_Score_thread.join();
-                log.info("Thread b_Score finished.");
-                
-                
-                
-                if(scoringEnabledLgd && lgdAggregationFinished.equals("1"))
-            	{
-                    lgd_thread.start();
-                    log.info("Thread LGD started.");
-            	}
-                	lgd_thread.join();
-	                log.info("Thread LGD finished.");
+                log.info("Thread b_Score finished.");    
+                lgd_thread.join();
+	            log.info("Thread LGD finished.");
                 
             } catch (Exception ex) {
                 log.error(ex.getMessage(), ex);
@@ -694,7 +691,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
                 if (all_requests_lgd.size() != 0) {
                 	RecordsFound = 1;
                     log.info("{} record(s) found to be scored in LGD_REQUEST Table", all_requests_lgd.size());
-                    logResult = this.getClass().getName() + ": " + all_requests_lgd.size() + " record(s) found to be scored in LGD_REQUEST Table";
+                    logResult = this.getClass().getName() + ": " + all_requests_lgd.size() + " record(s) found to be scored in LGD_REQUEST Table"+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
                     if (logLevel.toUpperCase().equals("INFO")) {
                     	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -730,7 +727,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             }
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
-                logResult = this.getClass().getName() + ": " + "Error in processing LGD-Score thread runnable, " + e.getMessage();
+                logResult = this.getClass().getName() + ": " + "Error in processing LGD-Score thread runnable, " + e.getMessage()+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
                 if (logLevel.toUpperCase().equals("ERROR")) {
                 	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -747,10 +744,13 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             rowOutput_ascore = processInputRowByRow_ascore(aScoreRequest);
             //log.info("Scoring_Segment A = {}",rowOutput_ascore.getOutputMap().get("Scoring_Segment").toString());
             
-            if (rowOutput_ascore.getOutputMap().get("Scoring_Segment").toString().length() != 0 && !rowOutput_ascore.getOutputMap().get("Scoring_Segment").toString().equalsIgnoreCase("No_Scorecard") && rowOutput_ascore.getOutputHeaders().size() != 0 && rowOutput_ascore.getRowData().size() != 0 && rowOutput_ascore.getOutputMap().size() != 0) {
+            if (rowOutput_ascore.getOutputMap().get("Scoring_Segment").toString().length() != 0 &&
+            		!rowOutput_ascore.getOutputMap().get("Scoring_Segment").toString().equalsIgnoreCase("No_Scorecard") &&
+            		rowOutput_ascore.getOutputHeaders().size() != 0 && rowOutput_ascore.getRowData().size() != 0 &&
+            		rowOutput_ascore.getOutputMap().size() != 0) {
                 expAdhAScoreInputRepository.setProcessStatusForAScoreRequest("Proceed", aScoreRequest.getRequestId());
                 log.info("Row with request_id {} is scored successfully - application scorecard", aScoreRequest.getRequestId());
-                logResult = "Row is scored successfully";
+                logResult = "Row is scored successfully ASCORE "+" "+BigDecimal.valueOf(aScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
                 if (logLevel.toUpperCase().equals("INFO")) {
                 	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                     saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "A-SCORE", logUser, "Processing", BigDecimal.valueOf(aScoreRequest.getRequestId()));
@@ -763,7 +763,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             } else {
                 expAdhAScoreInputRepository.setProcessStatusForAScoreRequest("Failed", aScoreRequest.getRequestId());
                 log.info("Row with request_id {} is failed - application scorecard", aScoreRequest.getRequestId());
-                logResult =  "Row failed";
+                logResult =  "Row failed ASCORE" +" "+BigDecimal.valueOf(aScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
                 if (rowOutput_ascore.getOutputMap().size() == 0)
 					logResult += " because stratgy output size is = " + rowOutput_ascore.getOutputMap().size();
 				if (rowOutput_ascore.getOutputMap().size() != 0
@@ -782,7 +782,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult= "Error in processing input row by row for A-Score, " + e.getMessage();
+            logResult= "Error in processing input row by row for A-Score, " + e.getMessage()+" "+BigDecimal.valueOf(aScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -801,7 +801,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             if (rowOutput_bscore.getOutputMap().get("B_Scorecard.Scoring_Segment").toString().length() != 0 && !rowOutput_bscore.getOutputMap().get("B_Scorecard.Scoring_Segment").toString().equalsIgnoreCase("No_Scorecard") && rowOutput_bscore.getOutputHeaders().size() != 0 && rowOutput_bscore.getRowData().size() != 0 && rowOutput_bscore.getOutputMap().size() != 0) {
                 expAdhBScoreInputRepository.setProcessStatusForBScoreRequest("Proceed", bScoreRequest.getRequestId());
                 log.info("Row with request_id {} is scored successfully - behaviour scorecard", bScoreRequest.getRequestId());
-                logResult =  "Row is scored successfully";
+                logResult =  "Row is scored successfully BSCORE"+" "+BigDecimal.valueOf(bScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
                 if (logLevel.toUpperCase().equals("INFO")) {
                 	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                     saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "B-SCORE", logUser, "Processing", BigDecimal.valueOf(bScoreRequest.getRequestId()));
@@ -814,7 +814,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             } else {
 				expAdhBScoreInputRepository.setProcessStatusForBScoreRequest("Failed", bScoreRequest.getRequestId());
 				log.info("Row with request_id {} is failed - behaviour scorecard", bScoreRequest.getRequestId());
-				logResult =  "Row failed";
+				logResult =  "Row failed BSCORE "+" "+BigDecimal.valueOf(bScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
 				if (rowOutput_bscore.getOutputMap().size() == 0)
 					logResult += " because stratgy output size is = " + rowOutput_bscore.getOutputMap().size();
 				if (rowOutput_bscore.getOutputMap().size() != 0
@@ -832,7 +832,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult = "Error in processing input row by row for B-Score, " + e.getMessage();
+            logResult = "Error in processing input row by row for B-Score, " + e.getMessage()+" "+BigDecimal.valueOf(bScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -854,7 +854,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             if (rowOutput_lgd.getOutputMap().size() != 0 && rowOutput_lgd.getOutputMap().get("Model.Modelid").toString().length() != 0 && !rowOutput_lgd.getOutputMap().get("Model.Modelid").toString().isEmpty()) {
                 expAdhLgdInputRepository.setProcessStatusForLGDRequest("Proceed", lgdRequest.getRequestId());
                 log.info("Row with request_id {} is scored successfully - LGD ", lgdRequest.getRequestId());
-                logResult =  "Row  is scored successfully";
+                logResult =  "Row  is scored successfully LGD SCORE" +" "+BigDecimal.valueOf(lgdRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
                 if (logLevel.toUpperCase().equals("INFO")) {
                 	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
                     saveLogOutputToDB(java.util.Calendar.getInstance().getTime(), logLevel, logResult, "LGD", logUser, "Processing", BigDecimal.valueOf(lgdRequest.getRequestId()));
@@ -867,7 +867,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             } else {
                 expAdhLgdInputRepository.setProcessStatusForLGDRequest("Failed", lgdRequest.getRequestId());
                 log.info("Row with request_id {} is failed - LGD ", lgdRequest.getRequestId());
-                logResult =  "Row failed";
+                logResult =  "Row failed LGD SCORE"+" "+BigDecimal.valueOf(lgdRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
                 if (rowOutput_lgd.getOutputMap().size() == 0)
                 	logResult += " because stratgy output size is = " +rowOutput_lgd.getOutputMap().size();
                 	if (rowOutput_lgd.getOutputMap().size() != 0 && rowOutput_lgd.getOutputMap().get("Model.Modelid").toString().length() == 0)
@@ -879,7 +879,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            logResult =  "Error in processing input row by row for LGD-Score, " + e.getMessage();
+            logResult =  "Error in processing input row by row for LGD-Score, " + e.getMessage()+" "+BigDecimal.valueOf(lgdRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -1055,7 +1055,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             output = decisionAgentService.buildRowOutput_ascore(dataAreas, String.valueOf(aScoreRequest.getRequestId()), String.valueOf(aScoreRequest.getRunId()));
         } catch (Exception ex) {
             log.error(ex.getMessage(), ex);
-            logResult = this.getClass().getName() + ": " + "Error in processing records row by row, " + ex.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in processing records row by row, " + ex.getMessage()+" "+BigDecimal.valueOf(aScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -1076,7 +1076,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             output = decisionAgentService.buildRowOutput_bscore(dataAreas, String.valueOf(bScoreRequest.getRequestId()), String.valueOf(bScoreRequest.getRunId()));
         } catch (Exception ex) {
             log.error(ex.getMessage(), ex);
-            logResult = this.getClass().getName() + ": " + "Error in processing records row by row, " + ex.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in processing records row by row, " + ex.getMessage()+" "+BigDecimal.valueOf(bScoreRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -1098,7 +1098,7 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             output = decisionAgentService.buildRowOutput_lgd(dataAreas, String.valueOf(lgdRequest.getRequestId()), String.valueOf(lgdRequest.getRunId()));
         } catch (Exception ex) {
             log.error(ex.getMessage(), ex);
-            logResult = this.getClass().getName() + ": " + "Error in processing records row by row, " + ex.getMessage();
+            logResult = this.getClass().getName() + ": " + "Error in processing records row by row, " + ex.getMessage()+" "+BigDecimal.valueOf(lgdRequest.getRequestId())+" "+ dateTimeFormatter.format(LocalDateTime.now());
 
             if (logLevel.toUpperCase().equals("ERROR")) {
             	parserUtils.writeIntoLogFile(loggingDirectory, logFileName, logResult);
@@ -1708,6 +1708,55 @@ public class ScoreParserServiceImpl implements ScoreParserService {
             output.set_new(outputMap.get("Creditcard.New").toString());
             output.setCarLeaseHaircutPercentage(checkNull(outputMap.get("Carlease.HaircutPercentage")));
             output.setRealestateHaircutPercentage(checkNull(outputMap.get("Realestate.HaircutPercentage")));
+        	output.setSpareSpare01(outputMap.get("Spare.Spare01").toString());
+        	output.setSpareSpare02(outputMap.get("Spare.Spare02").toString());
+        	output.setSpareSpare03(outputMap.get("Spare.Spare03").toString());
+        	output.setSpareSpare04(outputMap.get("Spare.Spare04").toString());
+        	output.setSpareSpare05(outputMap.get("Spare.Spare05").toString());
+        	output.setSpareSpare06(outputMap.get("Spare.Spare06").toString());
+        	output.setSpareSpare07(outputMap.get("Spare.Spare07").toString());
+        	output.setSpareSpare08(outputMap.get("Spare.Spare08").toString());
+        	output.setSpareSpare09(outputMap.get("Spare.Spare09").toString());
+        	output.setSpareSpare10(outputMap.get("Spare.Spare10").toString());
+        	output.setSpareSpare11(outputMap.get("Spare.Spare11").toString());
+        	output.setSpareSpare12(outputMap.get("Spare.Spare12").toString());
+        	output.setSpareSpare13(outputMap.get("Spare.Spare13").toString());
+        	output.setSpareSpare14(outputMap.get("Spare.Spare14").toString());
+        	output.setSpareSpare15(outputMap.get("Spare.Spare15").toString());
+        	output.setSpareSpare16(outputMap.get("Spare.Spare16").toString());
+        	output.setSpareSpare17(outputMap.get("Spare.Spare17").toString());
+        	output.setSpareSpare18(outputMap.get("Spare.Spare18").toString());
+        	output.setSpareSpare19(outputMap.get("Spare.Spare19").toString());
+        	output.setSpareSpare20(outputMap.get("Spare.Spare20").toString());
+        	output.setSpareSpare21(outputMap.get("Spare.Spare21").toString());
+        	output.setSpareSpare22(outputMap.get("Spare.Spare22").toString());
+        	output.setSpareSpare24(outputMap.get("Spare.Spare24").toString());
+        	output.setSpareSpare25(outputMap.get("Spare.Spare25").toString());
+        	output.setSpareSpare26(outputMap.get("Spare.Spare26").toString());
+        	output.setSpareSpare27(outputMap.get("Spare.Spare27").toString());
+        	output.setSpareSpare28(outputMap.get("Spare.Spare28").toString());
+        	output.setSpareSpare29(outputMap.get("Spare.Spare29").toString());
+        	output.setSpareSpare30(outputMap.get("Spare.Spare30").toString());
+        	output.setSpareSpare31(outputMap.get("Spare.Spare31").toString());
+        	output.setSpareSpare32(outputMap.get("Spare.Spare32").toString());
+        	output.setSpareSpare33(outputMap.get("Spare.Spare33").toString());
+        	output.setSpareSpare34(outputMap.get("Spare.Spare34").toString());
+        	output.setSpareSpare35(outputMap.get("Spare.Spare35").toString());
+        	output.setSpareSpare36(outputMap.get("Spare.Spare36").toString());
+        	output.setSpareSpare37(outputMap.get("Spare.Spare37").toString());
+        	output.setSpareSpare38(outputMap.get("Spare.Spare38").toString());
+        	output.setSpareSpare39(outputMap.get("Spare.Spare39").toString());
+        	output.setSpareSpare40(outputMap.get("Spare.Spare40").toString());
+        	output.setSpareSpare41(outputMap.get("Spare.Spare41").toString());
+        	output.setSpareSpare42(outputMap.get("Spare.Spare42").toString());
+        	output.setSpareSpare43(outputMap.get("Spare.Spare43").toString());
+        	output.setSpareSpare44(outputMap.get("Spare.Spare44").toString());
+        	output.setSpareSpare45(outputMap.get("Spare.Spare45").toString());
+        	output.setSpareSpare46(outputMap.get("Spare.Spare46").toString());
+        	output.setSpareSpare47(outputMap.get("Spare.Spare47").toString());
+        	output.setSpareSpare48(outputMap.get("Spare.Spare48").toString());
+        	output.setSpareSpare49(outputMap.get("Spare.Spare49").toString());
+        	output.setSpareSpare50(outputMap.get("Spare.Spare50").toString());
         } catch (Exception e) {
                 log.error(e.getMessage(), e);
                 logResult = this.getClass().getName() + ": " + "Error when building LGD_RESPONSE output map, " + e.getMessage();

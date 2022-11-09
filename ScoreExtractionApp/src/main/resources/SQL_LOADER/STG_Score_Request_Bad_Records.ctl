@@ -1,5 +1,5 @@
 LOAD DATA
-INFILE 'D:\ScoreExtractionGitHub\ScoreExtraction\ScoreExtractionApp\src\main\resources\PROCESSING\STG_Score_Request_Bad_Records.csv'
+INFILE 'D:\ScoreExtractionGitHub\ScoreExtraction-master\ScoreExtractionApp\src\main\resources\PROCESSING\STG_Score_Request_Bad_Records.csv'
 APPEND
 INTO TABLE STG_Score_Request_Bad_Records
  FIELDS TERMINATED BY ","

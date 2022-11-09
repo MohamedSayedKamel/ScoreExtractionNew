@@ -1,6 +1,6 @@
 OPTIONS (SKIP=1)
 LOAD DATA
-INFILE 'D:\ScoreExtractionGitHub\ScoreExtraction\ScoreExtractionApp\src\main\resources\PROCESSING\STG_Score_Request.csv'
+INFILE 'D:\ScoreExtractionGitHub\ScoreExtraction-master\ScoreExtractionApp\src\main\resources\PROCESSING\STG_Score_Request.csv'
 APPEND
 INTO TABLE STG_SCORE_REQUEST
  FIELDS TERMINATED BY ","
